@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
+from math import isfinite
 from urllib.parse import parse_qs, urlparse
 
 CURRENCY = {"AU": "AUD", "US": "USD", "UK": "GBP"}
@@ -135,7 +136,7 @@ def rank_top10(records: list[dict], market: str, now: datetime | None = None) ->
             continue
         if not isinstance(product.get("label"), str) or not product["label"].strip() or not isinstance(product.get("variant"), str) or not product["variant"].strip():
             continue
-        if not isinstance(product.get("quantity"), (int, float)) or product["quantity"] <= 0 or product.get("unit") not in {"each", "g", "ml", "sheet", "page"}:
+        if not isinstance(product.get("quantity"), (int, float)) or isinstance(product["quantity"], bool) or not isfinite(product["quantity"]) or product["quantity"] <= 0 or product.get("unit") not in {"each", "g", "ml", "sheet", "page"}:
             continue
         baselines = [r for r in (product.get("baselines") if isinstance(product.get("baselines"), list) else []) if _valid_baseline(product, r, market, now)]
         if not baselines:
