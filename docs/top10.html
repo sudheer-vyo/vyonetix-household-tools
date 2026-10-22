@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Top 10 exact-item price comparisons | Vyonetix</title>
+<style>
+  :root{color-scheme:light;--ink:#183026;--muted:#4e6259;--line:#cbd9d0;--green:#146746;--paper:#f5f8f5}
+  *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+  main{max-width:850px;margin:auto;padding:22px 14px 60px}header,section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:14px}header{background:#e5f1e9}
+  h1{margin:0 0 8px;font-size:clamp(1.7rem,5vw,2.4rem);line-height:1.15}h2{font-size:1.2rem;margin:0 0 10px}p{margin:8px 0}.small{font-size:.9rem;color:var(--muted)}
+  label{font-weight:700;display:block;margin:14px 0 6px}select,input{font:inherit;width:100%;min-height:44px;border:1px solid #899f90;border-radius:8px;padding:8px;background:#fff}
+  .card{border:1px solid var(--line);border-radius:10px;padding:16px;margin:14px 0}.card h3{margin:0 0 8px}.saving{font-size:1.15rem;font-weight:750;color:#0b5f3e}
+  a{color:#075e43}a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #075e43;outline-offset:2px}.note{background:#fff9e8;border-left:4px solid #99640e;padding:10px 12px}
+</style>
+</head>
+<body><main>
+  <header><h1>Top 10 exact-item price comparisons</h1><p>Choose your country to see up to ten currently verified marketplace items that cost less than the cheapest checked local retailer for the same exact variant and pack.</p></header>
+  <section><label for="market">Country</label><select id="market"><option value="AU">Australia · AUD</option><option value="US">United States · USD</option><option value="UK">United Kingdom · GBP</option></select>
+    <p class="small">Only positive, exact-match comparisons appear. Delivery, allocated membership cost and tax must be included in both totals. Auctions, missing prices and stale checks are excluded.</p>
+    <label for="dataFile">Optional local review: open a verified result JSON file</label><input id="dataFile" type="file" accept="application/json,.json"><p class="small">A selected file stays in your browser; it is not uploaded or published.</p>
+  </section>
+  <section aria-labelledby="results-title"><h2 id="results-title">Results</h2><div id="results" role="status" aria-live="polite">Checking available comparisons…</div></section>
+  <section class="small"><p class="note">Retailer prices, stock and checkout totals change. A comparison is not a retailer discount claim. Confirm the exact product and final payable amount at both shops.</p>
+    <p>The public feed is empty until approved product-data access and exact retailer matches are available. Amazon comparisons are held for the registered Vyonetix site and a compliant lowest-new price source. For a comparison you can make now, use the <a href="retailer_compare.html">single-item worksheet</a>.</p>
+    <p><a href="https://deals.vyonetixsolutions.com.au/">Vyonetix buying guides</a> · <a href="https://deals.vyonetixsolutions.com.au/feed/">RSS</a></p>
+  </section>
+</main><script>
+(() => {
+  'use strict';
+  const market=document.getElementById('market'), results=document.getElementById('results'), file=document.getElementById('dataFile');
+  const currency={AU:'AUD',US:'USD',UK:'GBP'};
+  let payload={market:'AU',items:[]},localPreview=false;
+  const el=(tag,value,cls)=>{const n=document.createElement(tag);n.textContent=value;if(cls)n.className=cls;return n};
+  const https=value=>{try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password}catch{return false}};
+  const fresh=(value,minutes)=>{const t=Date.parse(value),age=Date.now()-t;return Number.isFinite(t)&&age>=0&&age<=minutes*60*1000};
+  const money=value=>new Intl.NumberFormat(market.value==='UK'?'en-GB':market.value==='US'?'en-US':'en-AU',{style:'currency',currency:currency[market.value],currencyDisplay:'code'}).format(Number(value));
+  function render(){
+    results.replaceChildren();
+    if(payload.market!==market.value){results.append(el('p','No verified comparisons are loaded for this country.','note'));return}
+    // The public GitHub Pages address is not yet verified as a registered
+    // Amazon Associates Site. Suppress Amazon Product Advertising Content here.
+    const rows=(Array.isArray(payload.items)?payload.items:[]).filter(r=>r&&r.market===market.value&&r.currency===currency[market.value]&&r.network==='ebay'&&fresh(r.offer_checked_at,15)&&fresh(r.other_checked_at,24*60)&&Number.isFinite(Number(r.saving))&&Number(r.saving)>0&&Number.isFinite(Number(r.saving_percent))&&Number(r.offer_total)<Number(r.other_total)&&https(r.offer_url)&&https(r.other_url)).sort((a,b)=>Number(b.saving)-Number(a.saving)).slice(0,10);
+    if(!rows.length){results.append(el('p','No current, source-verified same-item savings are available for '+market.options[market.selectedIndex].text+'. The list is not padded with guesses.','note'));return}
+    results.append(el('p',rows.length+(localPreview?' locally previewed':' source-verified')+' comparison'+(rows.length===1?'':'s')+' · shown in descending estimated saving.','small'));
+    for(const [index,r] of rows.entries()){
+      const card=el('article','','card');card.append(el('h3',(index+1)+'. '+r.label+' · '+r.variant),el('p',money(r.saving)+' lower estimated total ('+r.saving_percent+'%)','saving'));
+      card.append(el('p',(r.network==='amazon'?'Amazon':'eBay')+' '+money(r.offer_total)+' vs '+r.other_retailer+' '+money(r.other_total)+'. Same '+r.quantity+' '+r.unit+', new condition.'));
+      card.append(el('p','Checked: '+new Date(r.offer_checked_at).toLocaleString()+' (marketplace), '+new Date(r.other_checked_at).toLocaleString()+' ('+r.other_retailer+').','small'));
+      const links=el('p','Source pages: ');const first=el('a',r.network==='amazon'?'Amazon':'eBay');first.href=r.offer_url;first.target='_blank';first.rel='noopener nofollow';const second=el('a',r.other_retailer);second.href=r.other_url;second.target='_blank';second.rel='noopener nofollow';links.append(first,document.createTextNode(' · '),second);card.append(links);results.append(card);
+    }
+  }
+  market.addEventListener('change',render);
+  file.addEventListener('change',async()=>{try{const selected=file.files&&file.files[0];if(!selected)return;payload=JSON.parse(await selected.text());localPreview=true;render()}catch{payload={market:market.value,items:[]};results.textContent='The selected JSON file could not be read.'}});
+  fetch('top10-data.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{if(!file.files.length){payload=d;render()}}).catch(()=>{results.textContent='The public comparison feed is unavailable. Try the single-item worksheet.'});
+})();
+</script></body></html>
