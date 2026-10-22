@@ -1,0 +1,411 @@
+{
+  "schema_version": "1.0",
+  "market": "AU",
+  "catalog_reviewed_at": "2026-10-22",
+  "release_state": "local_review_only",
+  "note": "Manufacturer-sourced model and consumable matches. No price, inventory, offer or affiliate link is asserted. Confirm each printer's exact label and regional cartridge before purchase.",
+  "error_codes": [
+    {
+      "brand": "HP",
+      "model": "DeskJet 2920",
+      "code": "E0",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "summary": "The ink cartridge has a connectivity issue.",
+      "steps": [
+        "Check which ink-level icon is blinking.",
+        "Remove and reinstall that cartridge, checking that protective tape was removed.",
+        "If E0 remains, follow HP's model-specific support steps before replacing it."
+      ],
+      "safety_stop": "If the displayed message or model differs, stop and use the exact manufacturer's support page.",
+      "source_url": "https://support.hp.com/au-en/document/ish_12643433-12643483-16"
+    },
+    {
+      "brand": "HP",
+      "model": "DeskJet 2922",
+      "code": "E0",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "summary": "The ink cartridge has a connectivity issue.",
+      "steps": [
+        "Check which ink-level icon is blinking.",
+        "Remove and reinstall that cartridge, checking that protective tape was removed.",
+        "If E0 remains, follow HP's model-specific support steps before replacing it."
+      ],
+      "safety_stop": "If the displayed message or model differs, stop and use the exact manufacturer's support page.",
+      "source_url": "https://support.hp.com/au-en/document/ish_12643433-12643483-16"
+    },
+    {
+      "brand": "HP",
+      "model": "DeskJet 2930",
+      "code": "E0",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "summary": "The ink cartridge has a connectivity issue.",
+      "steps": [
+        "Check which ink-level icon is blinking.",
+        "Remove and reinstall that cartridge, checking that protective tape was removed.",
+        "If E0 remains, follow HP's model-specific support steps before replacing it."
+      ],
+      "safety_stop": "If the displayed message or model differs, stop and use the exact manufacturer's support page.",
+      "source_url": "https://support.hp.com/au-en/document/ish_12643433-12643483-16"
+    },
+    {
+      "brand": "Canon",
+      "model": "PIXMA TS3160",
+      "code": "E03",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "summary": "The cover is open or paper is jammed; the support code distinguishes the cause.",
+      "steps": [
+        "Read the accompanying support code.",
+        "For 1203, close the cover; for 1300, follow Canon's paper-jam instructions.",
+        "Resume only after the obstruction or open cover is resolved."
+      ],
+      "safety_stop": "If the displayed message or model differs, stop and use the exact manufacturer's support page.",
+      "source_url": "https://ij.manual.canon/ij/webmanual/Manual/All/TS3100%20series/EN/NTR/ntr_t_07_01_c.html"
+    },
+    {
+      "brand": "Canon",
+      "model": "PIXMA TS3165",
+      "code": "E03",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "summary": "The cover is open or paper is jammed; the support code distinguishes the cause.",
+      "steps": [
+        "Read the accompanying support code.",
+        "For 1203, close the cover; for 1300, follow Canon's paper-jam instructions.",
+        "Resume only after the obstruction or open cover is resolved."
+      ],
+      "safety_stop": "If the displayed message or model differs, stop and use the exact manufacturer's support page.",
+      "source_url": "https://ij.manual.canon/ij/webmanual/Manual/All/TS3100%20series/EN/NTR/ntr_t_07_01_c.html"
+    },
+    {
+      "brand": "Canon",
+      "model": "PIXMA TS3166",
+      "code": "E03",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "summary": "The cover is open or paper is jammed; the support code distinguishes the cause.",
+      "steps": [
+        "Read the accompanying support code.",
+        "For 1203, close the cover; for 1300, follow Canon's paper-jam instructions.",
+        "Resume only after the obstruction or open cover is resolved."
+      ],
+      "safety_stop": "If the displayed message or model differs, stop and use the exact manufacturer's support page.",
+      "source_url": "https://ij.manual.canon/ij/webmanual/Manual/All/TS3100%20series/EN/NTR/ntr_t_07_01_c.html"
+    },
+    {
+      "brand": "Canon",
+      "model": "PIXMA TS3660",
+      "code": "E03",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "summary": "The cover opened during printing or paper jammed in the rear feed.",
+      "steps": [
+        "Read the accompanying support code.",
+        "For 1203, close the cover; for 1300, follow Canon's rear-feed paper-jam instructions.",
+        "Resume only after the obstruction or open cover is resolved."
+      ],
+      "safety_stop": "If the displayed message or model differs, stop and use the exact manufacturer's support page.",
+      "source_url": "https://ij.manual.canon/ij/webmanual/ErrorCode/TS3600%20series/EN/ERR/err_t_07_01.html"
+    },
+    {
+      "brand": "Brother",
+      "model": "DCP-L2640DW",
+      "code": "Toner Low",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "summary": "The toner is approaching the end of its expected life.",
+      "steps": [
+        "If print quality is still acceptable, continue using the current cartridge.",
+        "Keep a new toner cartridge ready.",
+        "Replace the toner when the machine displays Replace Toner or quality is no longer acceptable; distinguish toner from drum."
+      ],
+      "safety_stop": "If the displayed message or model differs, stop and use the exact manufacturer's support page.",
+      "source_url": "https://www.brother.com.au/en/support/dcp-l2640dw/faqs/faq00002517_004"
+    },
+    {
+      "brand": "Brother",
+      "model": "MFC-L2800DW",
+      "code": "Toner Low",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "summary": "The toner is approaching the end of its expected life.",
+      "steps": [
+        "If print quality is still acceptable, continue using the current cartridge.",
+        "Keep a new toner cartridge ready.",
+        "Replace the toner when the machine displays Replace Toner or quality is no longer acceptable; distinguish toner from drum."
+      ],
+      "safety_stop": "If the displayed message or model differs, stop and use the exact manufacturer's support page.",
+      "source_url": "https://www.brother.com.au/en/support/mfc-l2800dw/faqs/faq00002517_004"
+    },
+    {
+      "brand": "Brother",
+      "model": "HL-L2460DW",
+      "code": "Toner Low",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "summary": "The toner is approaching the end of its expected life.",
+      "steps": [
+        "If print quality is still acceptable, continue using the current cartridge.",
+        "Keep a new toner cartridge ready.",
+        "Replace the toner when the machine displays Replace Toner or quality is no longer acceptable; distinguish toner from drum."
+      ],
+      "safety_stop": "If the displayed message or model differs, stop and use the exact manufacturer's support page.",
+      "source_url": "https://www.brother.com.au/en/support/hl-l2460dw/faqs/faq00002214_004"
+    }
+  ],
+  "consumables": [
+    {
+      "printer_brand": "HP",
+      "printer_model": "DeskJet 2920",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "black ink",
+      "part_number": "HP 68 Black",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://support.hp.com/au-en/document/ish_12639498-12640552-16",
+      "offers": []
+    },
+    {
+      "printer_brand": "HP",
+      "printer_model": "DeskJet 2920",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "colour ink",
+      "part_number": "HP 68 Tri-color",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://support.hp.com/au-en/document/ish_12639498-12640552-16",
+      "offers": []
+    },
+    {
+      "printer_brand": "HP",
+      "printer_model": "DeskJet 2922",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "black ink",
+      "part_number": "HP 68 Black",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://support.hp.com/au-en/document/ish_12639498-12640552-16",
+      "offers": []
+    },
+    {
+      "printer_brand": "HP",
+      "printer_model": "DeskJet 2922",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "colour ink",
+      "part_number": "HP 68 Tri-color",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://support.hp.com/au-en/document/ish_12639498-12640552-16",
+      "offers": []
+    },
+    {
+      "printer_brand": "HP",
+      "printer_model": "DeskJet 2930",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "black ink",
+      "part_number": "HP 68 Black",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://support.hp.com/au-en/document/ish_12639498-12640552-16",
+      "offers": []
+    },
+    {
+      "printer_brand": "HP",
+      "printer_model": "DeskJet 2930",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "colour ink",
+      "part_number": "HP 68 Tri-color",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://support.hp.com/au-en/document/ish_12639498-12640552-16",
+      "offers": []
+    },
+    {
+      "printer_brand": "Canon",
+      "printer_model": "PIXMA TS3160",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "black ink",
+      "part_number": "PG-645",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.canon.com.au/accessories-supplies/ink-cartridge-pg-645",
+      "offers": []
+    },
+    {
+      "printer_brand": "Canon",
+      "printer_model": "PIXMA TS3160",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "colour ink",
+      "part_number": "CL-646",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.canon.com.au/accessories-supplies/ink-cartridge-pg-645",
+      "offers": []
+    },
+    {
+      "printer_brand": "Canon",
+      "printer_model": "PIXMA TS3165",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "black ink",
+      "part_number": "PG-645",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.canon.com.au/accessories-supplies/ink-cartridge-pg-645",
+      "offers": []
+    },
+    {
+      "printer_brand": "Canon",
+      "printer_model": "PIXMA TS3165",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "colour ink",
+      "part_number": "CL-646",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.canon.com.au/accessories-supplies/ink-cartridge-pg-645",
+      "offers": []
+    },
+    {
+      "printer_brand": "Canon",
+      "printer_model": "PIXMA TS3166",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "black ink",
+      "part_number": "PG-645",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.canon.com.au/accessories-supplies/ink-cartridge-pg-645",
+      "offers": []
+    },
+    {
+      "printer_brand": "Canon",
+      "printer_model": "PIXMA TS3166",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "colour ink",
+      "part_number": "CL-646",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.canon.com.au/accessories-supplies/ink-cartridge-pg-645",
+      "offers": []
+    },
+    {
+      "printer_brand": "Canon",
+      "printer_model": "PIXMA TS3660",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "black ink",
+      "part_number": "PG-645",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.canon.com.au/printers/pixma-ts3660",
+      "offers": []
+    },
+    {
+      "printer_brand": "Canon",
+      "printer_model": "PIXMA TS3660",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "colour ink",
+      "part_number": "CL-646",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.canon.com.au/printers/pixma-ts3660",
+      "offers": []
+    },
+    {
+      "printer_brand": "Brother",
+      "printer_model": "DCP-L2640DW",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "standard black toner",
+      "part_number": "TN2530",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.brother.com.au/-/media/ap2/Australia/Products/Common/Brochures/DCP-L2640DW---Brochure.pdf",
+      "offers": []
+    },
+    {
+      "printer_brand": "Brother",
+      "printer_model": "DCP-L2640DW",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "high-yield black toner",
+      "part_number": "TN2530XL",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.brother.com.au/-/media/ap2/Australia/Products/Common/Brochures/DCP-L2640DW---Brochure.pdf",
+      "offers": []
+    },
+    {
+      "printer_brand": "Brother",
+      "printer_model": "MFC-L2800DW",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "standard black toner",
+      "part_number": "TN2530",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.brother.com.au/-/media/ap2/australia/products/common/brochures/mfc-l2800dw---brochure.pdf?rev=95745c0a6a474cb1a5d6685d9685a588",
+      "offers": []
+    },
+    {
+      "printer_brand": "Brother",
+      "printer_model": "MFC-L2800DW",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "high-yield black toner",
+      "part_number": "TN2530XL",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.brother.com.au/-/media/ap2/australia/products/common/brochures/mfc-l2800dw---brochure.pdf?rev=95745c0a6a474cb1a5d6685d9685a588",
+      "offers": []
+    },
+    {
+      "printer_brand": "Brother",
+      "printer_model": "HL-L2460DW",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "standard black toner",
+      "part_number": "TN2530",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.brother.com.au/-/media/ap2/australia/products/common/brochures/hl-l2460dw---brochure.pdf?rev=d489fee6be5d4d02aba98950d9293699",
+      "offers": []
+    },
+    {
+      "printer_brand": "Brother",
+      "printer_model": "HL-L2460DW",
+      "region": "AU",
+      "verified": true,
+      "reviewed_at": "2026-10-22",
+      "type": "high-yield black toner",
+      "part_number": "TN2530XL",
+      "notes": "OEM family/part number; confirm the cartridge label and regional variant before purchase.",
+      "source_url": "https://www.brother.com.au/-/media/ap2/australia/products/common/brochures/hl-l2460dw---brochure.pdf?rev=d489fee6be5d4d02aba98950d9293699",
+      "offers": []
+    }
+  ]
+}
