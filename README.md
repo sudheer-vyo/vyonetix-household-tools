@@ -12,6 +12,8 @@ The retailer worksheet uses only observations you enter. It requires a source, a
 
 For guides and deals, visit [Vyonetix Deals](https://deals.vyonetixsolutions.com.au/) or subscribe to its [RSS feed](https://deals.vyonetixsolutions.com.au/feed/). Its commercial posts require individual current-offer checks before buying or resharing.
 
+Join the [Vyonetix Deals Discord community](https://discord.gg/Qknnb6Hb3) to discuss tool results and household decisions. Verify any offer at the retailer before purchase.
+
 ## Status
 
 This repository contains no private workspace files, API credentials, personal data, partner tags, or automated group posting code. The tools are original Vyonetix prototypes and are supplied without a general reuse licence until the owner chooses one. No live retailer prices or savings are claimed.
