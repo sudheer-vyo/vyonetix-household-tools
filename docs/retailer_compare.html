@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compare a household item | Vyonetix local tool</title>
+<style>
+  :root{color-scheme:light;--ink:#183026;--muted:#4e6259;--line:#cbd9d0;--green:#146746;--paper:#f5f8f5;--warn:#6a4812}
+  *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+  main{max-width:900px;margin:auto;padding:18px 14px 60px}header,section{background:white;border:1px solid var(--line);border-radius:14px;padding:20px;margin:0 0 14px}
+  header{background:#e5f1e9}h1{font-size:clamp(1.7rem,5vw,2.3rem);line-height:1.12;margin:0 0 10px}h2{font-size:1.2rem;margin:0 0 12px}p{margin:8px 0}
+  .small{font-size:.9rem;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.row{border-top:1px solid var(--line);padding:16px 0}.row:first-child{border-top:0}.row h3{margin:0 0 10px;font-size:1rem}
+  label{display:block;font-weight:650;font-size:.88rem}input,select,button{font:inherit}input,select{display:block;width:100%;min-height:44px;border:1px solid #899f90;border-radius:8px;background:white;padding:8px;margin-top:4px}
+  input[type=checkbox]{display:inline-block;width:22px;min-height:22px;margin:0 8px 0 0;vertical-align:middle}.check{font-weight:400;margin-top:12px}
+  button{min-height:44px;padding:9px 15px;border:0;border-radius:8px;background:var(--green);color:white;font-weight:700;cursor:pointer;margin:4px 8px 4px 0}.secondary{color:var(--ink);background:#e7eee8}
+  .result{border:1px solid var(--line);border-radius:9px;padding:12px;margin:9px 0}.result strong{font-size:1.15rem}.warning{color:var(--warn)}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}header,section{padding:16px}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Compare the same item across shops</h1>
+    <p>Enter current prices for one exact product or pack variant. The tool compares the cost after delivery and any membership amount you allocate to this purchase.</p>
+    <p class="small">Browser-only worksheet · no price fetching, account, analytics, cookies, or affiliate links. Confirm each price at checkout before buying.</p>
+  </header>
+  <section aria-labelledby="item-title">
+    <h2 id="item-title">1. Identify the exact item</h2>
+    <div class="grid">
+      <label>Country
+        <select id="market"><option value="AU">Australia (AUD)</option><option value="US">United States (USD)</option><option value="UK">United Kingdom (GBP)</option></select>
+      </label>
+      <label>Product name and exact variant or model<input id="product" type="text" placeholder="e.g. model, size and colour" required></label>
+      <label>Common quantity unit
+        <select id="unit"><option value="each">each</option><option value="g">grams</option><option value="ml">millilitres</option><option value="sheet">sheets</option><option value="page">pages</option></select>
+      </label>
+    </div>
+  </section>
+  <section aria-labelledby="prices-title">
+    <h2 id="prices-title">2. Enter observed prices</h2>
+    <p class="small">Use the same exact variant and quantity unit in each row. Leave a row blank if you cannot verify it. For in-store prices, write “shelf label” in the source field.</p>
+    <div id="rows"></div>
+    <button id="add" type="button" class="secondary">Add another shop</button>
+    <button id="compare" type="button">Compare entered prices</button>
+  </section>
+  <section aria-labelledby="result-title">
+    <h2 id="result-title">3. Comparison</h2>
+    <div id="output" role="status" aria-live="polite">Enter at least two current, exact-match observations.</div>
+  </section>
+</main>
+<script>
+(() => {
+  'use strict';
+  const markets = {AU:{currency:'AUD',shops:['Amazon AU','Woolworths','Coles','ALDI','Costco AU']},US:{currency:'USD',shops:['Amazon US','Walmart','Target','Costco US']},UK:{currency:'GBP',shops:['Amazon UK','Tesco','Sainsbury’s','Costco UK']}};
+  const byId = id => document.getElementById(id);
+  const rows = byId('rows'), output = byId('output');
+  const text = (tag,value,cls) => {const el=document.createElement(tag);el.textContent=value;if(cls)el.className=cls;return el};
+  const field = (caption,kind,placeholder) => {const label=text('label',caption);const input=document.createElement('input');input.type=kind;input.placeholder=placeholder||'';if(kind==='number'){input.min='0';input.step='any';input.inputMode='decimal'}label.append(input);return {label,input}};
+  function addRow(name='') {
+    const section=document.createElement('div');section.className='row';section.append(text('h3','Shop '+(rows.children.length+1)));
+    const grid=document.createElement('div');grid.className='grid';
+    const data={};
+    for(const [key,caption,kind,placeholder] of [
+      ['shop','Retailer or shop','text',''],['price','Item price','number','0.00'],
+      ['qty','Pack quantity in the common unit','number','1'],['delivery','Delivery or pickup fee','number','0.00'],
+      ['membership','Membership cost allocated to this purchase','number','0.00'],['checked','Observed local date and time','datetime-local',''],
+      ['source','Source URL or “shelf label”','text','https://… or shelf label']]) {
+      const made=field(caption,kind,placeholder);made.input.dataset.key=key;if(key==='shop')made.input.value=name;grid.append(made.label);data[key]=made.input;
+    }
+    const check=text('label','I confirmed this is the exact item and variant','check');const box=document.createElement('input');box.type='checkbox';box.dataset.key='exact';check.prepend(box);
+    section.append(grid,check);rows.append(section);return section;
+  }
+  function resetShops(){rows.replaceChildren();markets[byId('market').value].shops.forEach(addRow);output.textContent='Enter at least two current, exact-match observations.'}
+  function number(input,emptyZero=false){const raw=input.value.trim();if(!raw)return emptyZero?0:null;const n=Number(raw);return Number.isFinite(n)&&n>=0?n:null}
+  function compare(){
+    output.replaceChildren();const product=byId('product').value.trim();if(product.length<5){output.append(text('p','Enter the exact product and variant first.','warning'));return}
+    const market=markets[byId('market').value],unit=byId('unit').value,valid=[],errors=[];
+    for(const [index,row] of [...rows.children].entries()){
+      const get=key=>row.querySelector('[data-key="'+key+'"]');const shop=get('shop').value.trim(),price=number(get('price')),qty=number(get('qty')),delivery=number(get('delivery'),true),membership=number(get('membership'),true),source=get('source').value.trim(),checked=get('checked').value,exact=get('exact').checked;
+      if(!get('price').value.trim()&&!get('qty').value.trim())continue;
+      const when=new Date(checked);const age=Date.now()-when.getTime();
+      if(!shop||price===null||qty===null||qty<=0||delivery===null||membership===null||!source||!exact||!checked||!Number.isFinite(age)||age<0||age>24*60*60*1000){errors.push('Shop '+(index+1)+' needs a valid price, positive pack quantity, source, exact-match check, and observation within 24 hours.');continue}
+      if(/^https?:/i.test(source)){try{if(new URL(source).protocol!=='https:')throw Error()}catch{errors.push('Shop '+(index+1)+' source must be HTTPS or a shelf-label note.');continue}}
+      valid.push({shop,total:price+delivery+membership,qty,per:(price+delivery+membership)/qty,checked,source});
+    }
+    if(errors.length){for(const e of errors)output.append(text('p',e,'warning'))}
+    if(valid.length<2){output.append(text('p','At least two complete, current observations are required. No comparison was made.','warning'));return}
+    valid.sort((a,b)=>a.per-b.per);
+    output.append(text('p','For '+product+' in '+byId('market').value+'. Lower estimated delivered cost per '+unit+' is listed first. Retailer prices and availability can change.','small'));
+    const money=new Intl.NumberFormat(byId('market').value==='UK'?'en-GB':byId('market').value==='US'?'en-US':'en-AU',{style:'currency',currency:market.currency,currencyDisplay:'code'});
+    for(const r of valid){const card=document.createElement('div');card.className='result';card.append(text('strong',r.shop+' · '+money.format(r.per)+' per '+unit),text('p','Estimated purchase total '+money.format(r.total)+' for '+r.qty+' '+unit),text('p','Observed '+r.checked+' · Source: '+r.source,'small'));output.append(card)}
+    output.append(text('p','This ranking excludes unknown tax, stock, delivery restrictions, coupons, and membership value beyond the amount entered. Recheck checkout totals.','small'));
+  }
+  byId('market').addEventListener('change',resetShops);byId('add').addEventListener('click',()=>addRow());byId('compare').addEventListener('click',compare);resetShops();
+})();
+</script>
+</body>
+</html>

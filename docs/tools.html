@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Household cost tools — browser-only prototype</title>
+<style>
+body{font:16px/1.5 system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#182230}h1,h2{line-height:1.2}section{border:1px solid #c8d1dc;border-radius:12px;padding:1rem;margin:1rem 0}label{display:block;margin:.7rem 0}input{display:block;max-width:22rem;width:100%;padding:.55rem;border:1px solid #748094;border-radius:6px}output{display:block;font-weight:700;margin:.75rem 0;color:#12563b}.note{color:#445064;font-size:.94rem}button{padding:.55rem .8rem}
+</style></head><body>
+<h1>Household cost tools</h1>
+<p class="note">Browser-only prototype. Calculations use only numbers you enter in this browser. Results are estimates, not retailer quotes or guaranteed savings.</p>
+<section><h2>Appliance electricity cost</h2>
+<label>Power (watts)<input id="watts" type="number" min="0" step="1" value="1000"></label>
+<label>Hours used per day<input id="hours" type="number" min="0" step="0.1" value="2"></label>
+<label>Electricity rate (AUD per kWh)<input id="rate" type="number" min="0" step="0.001" value="0.30"></label>
+<button type="button" onclick="energy()">Calculate</button><output id="energyResult" aria-live="polite"></output><p class="note">Formula: watts ÷ 1,000 × hours/day × entered rate. Excludes standby use, tariffs, and fixed charges.</p></section>
+<section><h2>Meal cost per serving</h2>
+<label>Total ingredient cost (AUD)<input id="mealCost" type="number" min="0" step="0.01" value="0"></label>
+<label>Servings<input id="servings" type="number" min="1" step="1" value="1"></label>
+<button type="button" onclick="meal()">Calculate</button><output id="mealResult" aria-live="polite"></output><p class="note">Enter the amount of each ingredient actually used. Pantry items, waste, energy, and optional ingredients are not included unless you add them.</p></section>
+<section><h2>Bulk vs retail unit price</h2>
+<label>Option A total price (AUD)<input id="priceA" type="number" min="0" step="0.01" value="0"></label><label>Option A quantity<input id="qtyA" type="number" min="0.000001" step="any" value="1"></label>
+<label>Option B total price (AUD)<input id="priceB" type="number" min="0" step="0.01" value="0"></label><label>Option B quantity<input id="qtyB" type="number" min="0.000001" step="any" value="1"></label>
+<button type="button" onclick="units()">Compare</button><output id="unitResult" aria-live="polite"></output><p class="note">Use the same unit for both quantities. Add delivery or membership fees to the price if they apply.</p></section>
+<section><h2>Printer cost per page</h2>
+<label>Cartridge or toner price (AUD)<input id="supplyCost" type="number" min="0" step="0.01" value="0"></label><label>Rated page yield<input id="yieldPages" type="number" min="1" step="1" value="1"></label>
+<button type="button" onclick="cpp()">Calculate</button><output id="cppResult" aria-live="polite"></output><p class="note">Uses the yield you enter. Actual yield varies by coverage, print settings, maintenance, and manufacturer test method. It does not check cartridge compatibility.</p></section>
+<script>
+const n=id=>Number(document.getElementById(id).value);const money=x=>new Intl.NumberFormat('en-AU',{style:'currency',currency:'AUD'}).format(x);const set=(id,s)=>document.getElementById(id).textContent=s;
+function energy(){let w=n('watts'),h=n('hours'),r=n('rate');set('energyResult',w>=0&&h>=0&&r>=0?`${money(w/1000*h*r)} per day; ${money(w/1000*h*r*365)} per year at the entered assumptions.`:'Enter non-negative values.')}
+function meal(){let c=n('mealCost'),s=n('servings');set('mealResult',c>=0&&s>0?`${money(c/s)} per serving.`:'Enter a non-negative cost and at least one serving.')}
+function units(){let a=n('priceA')/n('qtyA'),b=n('priceB')/n('qtyB');set('unitResult',Number.isFinite(a)&&Number.isFinite(b)?`A: ${money(a)} per entered unit; B: ${money(b)} per entered unit. Lower unit cost: ${a===b?'tie':a<b?'A':'B'}.`:'Enter positive quantities and non-negative prices.')}
+function cpp(){let c=n('supplyCost'),y=n('yieldPages');set('cppResult',c>=0&&y>0?`${money(c/y)} per rated page.`:'Enter a non-negative price and positive page yield.')}
+energy();meal();units();cpp();
+</script></body></html>
