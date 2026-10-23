@@ -4,6 +4,18 @@ Small browser-only worksheets for everyday household decisions. [Open the tools]
 
 ## Tools
 
+### Hosted household tools
+
+Three distinct tools are available on the Vyonetix site. Each gives a free browser-side result before an optional retailer search. The hosted pages may contain clearly disclosed affiliate links; the GitHub Pages worksheets in this repository do not.
+
+- [Laptop battery part search](https://deals.vyonetixsolutions.com.au/tools/battery-checker/) — start with the laptop model or exact battery part number, then check physical and electrical compatibility with the manufacturer.
+- [Appliance electricity cost](https://deals.vyonetixsolutions.com.au/tools/electricity-cost/) — estimate running cost from watts, usage time and your own tariff.
+- [Meal cost per serving](https://deals.vyonetixsolutions.com.au/tools/meal-cost/) — total the ingredient cost actually used, then divide by servings.
+
+The [three-tool hub](https://deals.vyonetixsolutions.com.au/tools/) has an [RSS update feed](https://deals.vyonetixsolutions.com.au/tools/feed.xml). The [methods and limitations](docs/TOOL_METHODS.md) explain the calculations and what merchant searches do not verify. None of the hosted tools fetches Amazon prices or asserts that a search result is a discount.
+
+### Repository worksheets
+
 - [Four cost calculators](docs/tools.html): appliance electricity, meal cost per serving, bulk unit price, and printer cost per page.
 - [Retailer comparison worksheet](docs/retailer_compare.html): explicitly choose AU, US, or UK; enter current prices for the same exact item and compare delivered cost per common unit.
 - [Printer Error & Supply Desk](docs/printer/): search exact Australian printer model and error codes against the included manufacturer-sourced catalog; follow its source links before taking action.
@@ -21,6 +33,6 @@ Join the [Vyonetix Deals Discord community](https://discord.gg/Qknnb6Hb3) to dis
 
 ## Status
 
-This repository contains no private workspace files, API credentials, personal data, partner tags, or automated group posting code. The tools are original Vyonetix prototypes and are supplied without a general reuse licence until the owner chooses one. No live retailer prices or savings are claimed.
+This repository contains no private workspace files, API credentials, personal data, partner tags, or automated group posting code. The repository-hosted worksheets are original Vyonetix prototypes and are supplied without a general reuse licence until the owner chooses one. No live retailer prices or savings are claimed here. The linked Vyonetix site has its own adjacent affiliate disclosures.
 
 Source constraints: [Amazon Associates pricing and comparison rules](https://affiliate-program.amazon.com/help/operating/policies), [eBay Buy API production eligibility](https://developer.ebay.com/api-docs/buy/buy-requirements.html), and [Awin product-feed list access](https://help.awin.com/developers/docs/product-feed-list-download).
